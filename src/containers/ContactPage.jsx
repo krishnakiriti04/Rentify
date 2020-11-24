@@ -13,7 +13,7 @@ const ContactPage = () => {
         console.log("came here");
         let body = {name,email,message};
 
-        let response = await fetch("http://localhost:4000/requests/",{
+        let response = await fetch("https://hackathon-rentify.herokuapp.com/requests/",{
             method:"POST",
             body:JSON.stringify(body),
             headers:{

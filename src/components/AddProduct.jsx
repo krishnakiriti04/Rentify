@@ -26,6 +26,14 @@ function AddProduct() {
                         <label htmlFor="">Seater</label>
                         <input type="text" name="seater" id="seater" className="form-control"/>
                     </div>
+                    <div className="form-group">
+                        <label htmlFor="">Image URL</label>
+                        <input type="text" name="seater" id="seater" className="form-control"/>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="">Fuel Type</label>
+                        <input type="text" name="seater" id="seater" className="form-control"/>
+                    </div>
 
                 </form>
             </div>
