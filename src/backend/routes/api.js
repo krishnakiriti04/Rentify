@@ -1,7 +1,8 @@
 const express = require('express');
-//const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 const mongodb = require('mongodb');
 const jwt = require('jsonwebtoken');
+const Razorpay = require("razorpay");
 const client = mongodb.MongoClient;
 
 
@@ -16,7 +17,7 @@ let login = router.route('/login');
 let register = router.route('/register');
 
 login.get((req, res) => {
-    res.send("Hello World");
+    res.send("Login API");
 })
 
 login.post(async(req, res) => {
@@ -64,5 +65,58 @@ register.post(async(req, res) => {
         console.log("Registration error: " + error);
     }
 })
+
+//razorpay secret keys
+const keys = {
+    id: 'rzp_test_5ZzNWVi2y3Kd07',
+    secretkey: 'VWaUdZdgGhgGKXsCIcXC6c9W'
+}
+
+//creating the instance
+const razorInstance = new Razorpay({
+    key_id: keys.id,
+    key_secret: keys.secretkey
+})
+
+
+router.get("/orders", async(req, res) => {
+    try {
+        var options = {
+            amount: 50000, // amount in the smallest currency unit
+            currency: "INR",
+            receipt: "order_rcptid_11"
+        };
+        razorInstance.orders.create(options, function(err, order) {
+            if (err) res.status(401).json({ message: "something went wrong with order generation" })
+            return res.status(200).json({ status: 200, message: "order created successfully" });
+        });
+    } catch (error) {
+        res.status(402).json({ status: 402, message: "something wrong with order generation" })
+    }
+})
+
+
+router.post("/capture/:paymentId", async(req, res) => {
+    try {
+        return await fetch(`https://${keys.id}:${keys.secretkey}@api.razorpay.com/v1//payments/${req.params.paymentId}/capture`, {
+                method: "POST",
+                form: {
+                    amount: 5000 * 100,
+                    currency: "INR"
+                }
+            },
+            (err, res, body) => {
+                if (err) {
+                    return res.status(400).json({ status: 400, message: "some Error" })
+                } else {
+                    res.json({ status: 200, message: body })
+                }
+            }
+        )
+    } catch (err) {
+        return res.status(401).json({ message: "some error in catch" })
+    }
+})
+
 
 module.exports = router;

@@ -6,9 +6,54 @@
 /* linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), */
 
 .filter-page {
-    background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);
+    background-image: linear-gradient(120deg, #90affb 0%, #271b1c 100%);
 }
 
-.order-card {
-    background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+.order-page {
+    background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);
+    height: 110vh;
+}
+
+.product-card {
+    background-image: linear-gradient(120deg, #e8c7cb 0%, #65a0dc 100%);
+}
+
+.contact-page {
+    background-color: #212529;
+    height: 100vh;
+}
+
+.contact-card {
+    background-image: linear-gradient(-225deg, #CBBACC 0%, #2580B3 100%);
+}
+
+.card-picture {
+    background-size: cover;
+}
+
+.hero-img {
+    color: black;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    padding-top: 200px;
+    height: 100vh;
+    width: 100vw;
+}
+
+.hero-body {
+    opacity: 1;
+    z-index: 2;
+    color: white;
+    text-align: left;
+}
+
+.filterbtn {
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.add-item {
+    background-image: linear-gradient(-225deg, #2CD8D5 0%, #6B8DD6 48%, #8E37D7 100%);
 }

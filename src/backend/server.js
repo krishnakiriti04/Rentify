@@ -23,6 +23,10 @@ app.use('/products', products)
 app.use('/requests', contactus)
 
 
+app.get("/", (req, res) => {
+    res.send("Welcome to the Rentify backend")
+})
+
 // function authVerify(req, res, next) {
 //     if (req.headers.authorization !== undefined) {
 //         let result = await jwt.verify(req.headers.authorization, 'secretkey');

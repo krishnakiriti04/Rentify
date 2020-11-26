@@ -15,14 +15,17 @@
     "moment": "^2.29.1",
     "mongodb": "^3.6.3",
     "nodemailer": "^6.4.16",
+    "razorpay": "^2.0.6",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.0",
     "react-datepicker": "^3.3.0",
     "react-dom": "^17.0.1",
+    "react-icons": "^3.11.0",
     "react-multiple-datepicker": "^0.1.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
     "react-time-picker": "^4.0.1",
+    "react-toastify": "^6.1.0",
     "yup": "^0.31.0"
   },
   "scripts": {

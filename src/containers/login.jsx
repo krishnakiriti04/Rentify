@@ -1,20 +1,27 @@
 import React, {useState} from 'react';
 import './../App.css';
-import {Link, useHistory} from 'react-router-dom'
-// import Tickets from './tickets';
+import {Link, useHistory} from 'react-router-dom';
+import {  toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import {Spinner} from "react-bootstrap";
+
+toast.configure();
 
 const Login = () => {
+
     let [email,setEmail] = useState("");
     let [password,setPassword] = useState("");
+    let [loading,setLoading] = useState(false);
     const history = useHistory();
 
     const loginFunc = async (event) =>{
+        setLoading(true);
         event.preventDefault();
         let data = {
             email : email,
             password : password
         }
-        let response = await fetch('https://hackathon-rentify.herokuapp.com/api/login',{
+        let response = await fetch('http://localhost:4000/api/login',{
             method:"POST",
             body : JSON.stringify(data),
             headers: {
@@ -22,18 +29,17 @@ const Login = () => {
             }
         })
         let Fetchdata = await response.json();
-        //console.log("Fetched Data", Fetchdata);
         if(Fetchdata.status===200){
-            alert('Login success!!');
+            setLoading(false);
+            toast.success('Login success!!',{position:'top-center',autoClose:2000});
             localStorage.setItem('token',Fetchdata.token);
-            if(Fetchdata.userDetails.role === "admin"){
-                history.replace('/layout');
-            }else if(Fetchdata.userDetails.role==='customer'){
-                history.replace('/customer');
-            }else if( Fetchdata.userDetails.role==='agent'){
-                history.replace('/agents');
-            }
-            
+            history.replace('/home');
+        }else if(Fetchdata.status===400){
+            setLoading(false);
+            toast.error('Invalid Credentials',{autoClose:3000});
+        }else if(Fetchdata.status===401){
+            setLoading(false);
+            toast.info('Email not registered',{autoClose:2000});
         }
         setEmail("");
         setPassword("");
@@ -41,20 +47,24 @@ const Login = () => {
 
     return (
         <div className="container mt-3 d-flex justify-content-center">
-            <div className="card col-6 card-bg text-center">
+            <div className="card col-md-6 col-sm-12 card-bg text-center">
                    <h1>Login</h1>
-                <div className="card-body w-75 mx-auto">
+                <div className="card-body w-md-75 w-sm-100 mx-md-auto mx-sm-2">
                     <form className="form-group" onSubmit={loginFunc} method="POST">
                         <input type="text" name="email" id="email" value={email} className="bg-light form-control mb-2" onChange={(e)=> setEmail(e.target.value)} placeholder="Email" required/>
                         <input type="password" name="password" id="password" value={password} className="bg-light form-control mb-2" onChange={(e)=> setPassword(e.target.value)} placeholder="Password" required/>
-                        <button type="submit" className="btn btn-info px-3">Login</button>
+                        <button type="submit" className="btn btn-info px-3">Login { loading ? <Spinner animation="border" variant="light" /> :null} </button>
                     </form>
                     <div>
-                        <Link to="/layout">Forgot Password</Link>
+                        {/* <Link to="/layout" >Forgot Password</Link> */}
                         <p>Doesn't have an account? <Link to="/register">Sign Up</Link></p>        
                     </div>
                 </div>
-
+                <div className="text-center">
+                <h5>Test account</h5>
+                <h6>username : admin@gmail.com</h6>
+                <h6>password: admin</h6>
+            </div>
             </div>
         </div>
     )

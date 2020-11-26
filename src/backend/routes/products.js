@@ -86,53 +86,9 @@ products.post(async(req, res) => {
         }
         connection.close();
     } catch (error) {
-        console.log("Product Adding Error :", error)
+        res.json({ status: 401, message: "Catched the error while inserting data" })
     }
 })
-
-
-// modifyTicket.delete(async(req, res) => {
-//     try {
-//         let connection = await client.connect(dburl, { useUnifiedTopology: true });
-//         let db = connection.db('ReactLogin');
-//         let data = await db.collection('customerTickets').deleteOne({ "_id": mongodb.ObjectID(req.params.id) })
-//             // console.log("data:::", data);
-//         if (data) {
-//             res.json({
-//                 status: 200,
-//                 message: "Deleted Successfully"
-//             })
-//         } else {
-//             res.json({
-//                 status: 401,
-//                 message: "Deletion Failed!"
-//             })
-//         }
-//     } catch (error) {
-//         console.log("Deletion ticket error :", error)
-//     }
-// })
-
-// modifyTicket.put(async(req, res) => {
-//     try {
-//         let connection = await client.connect(dburl, { useUnifiedTopology: true });
-//         let db = connection.db('ReactLogin');
-//         let data = await db.collection('customerTickets').updateOne({ "_id": mongodb.ObjectID(req.params.id) }, { $set: req.body });
-//         if (data) {
-//             res.json({
-//                 status: 200,
-//                 message: "Updated Successfully"
-//             })
-//         } else {
-//             res.json({
-//                 status: 401,
-//                 message: "Updation Failed!"
-//             })
-//         }
-//     } catch (error) {
-//         console.log("Ticket Updation error :", error)
-//     }
-// })
 
 
 module.exports = router;
