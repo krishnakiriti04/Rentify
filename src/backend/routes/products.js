@@ -19,6 +19,7 @@ products.get(async(req, res) => {
         let data;
         if (req.query) {
             if (req.query.seater) req.query.seater = parseInt(req.query.seater);
+            if (req.query.wheels) req.query.wheels = parseInt(req.query.wheels);
             data = await db.collection('products').find(req.query).toArray();
             //console.log("data", data);
         } else {

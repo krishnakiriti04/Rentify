@@ -77,7 +77,7 @@ const Orders = (props) => {
     var rzp1 = new window.Razorpay(options);
     rzp1.open();
     rzp1.on("payment.failed", function (response) {
-      alert(response.error.description);
+      //alert(response.error.description);
       toast.danger(response.error.description, {
         position: "top-center",
         autoclose: 3000,
