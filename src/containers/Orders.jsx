@@ -30,7 +30,7 @@ const Orders = (props) => {
   totalDays = diffDuration.days();
 
   const handlePayment = async (e) => {
-    const response = await fetch("http://localhost:4000/api/orders");
+    const response = await fetch("https://hackathon-rentify.herokuapp.com/api/orders");
     const data = await response.json();
     var options = {
       key: "rzp_test_5ZzNWVi2y3Kd07", // Enter the Key ID generated from the Dashboard
@@ -42,7 +42,7 @@ const Orders = (props) => {
       handler: async (response) => {
         try {
           const paymentId = response.razorpay_payment_id;
-          const url = `http://localhost:4000/api/capture/${paymentId}`;
+          const url = `https://hackathon-rentify.herokuapp.com/api/capture/${paymentId}`;
           // alert(response.razorpay_order_id);
           // alert(response.razorpay_signature)
           const captureResponse = await fetch(url, {

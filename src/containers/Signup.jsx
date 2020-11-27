@@ -22,7 +22,7 @@ const Signup = () => {
             phone : phone,
             role : role
         }
-        let response = await fetch('http://localhost:4000/api/register',{
+        let response = await fetch('https://hackathon-rentify.herokuapp.com/api/register',{
             method:"POST",
             body : JSON.stringify(data),
             headers: {

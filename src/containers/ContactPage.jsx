@@ -3,6 +3,7 @@ import "./../App.css";
 import PageHeader from "./../components/PageHeader";
 import PageFooter from "./../components/PageFooter";
 import { AiOutlineMail } from "react-icons/ai";
+import { toast } from "react-toastify";
 
 const ContactPage = () => {
   const [name, setName] = useState("");
@@ -26,7 +27,7 @@ const ContactPage = () => {
     );
     let data = await response.json();
     if (data.status === 200) {
-      alert("Thanks for reaching out!!");
+      toast.success("Thanks for reaching out!!",{position:"top-left",autoClose:3000});
     }
     setName("");
     setEmail("");

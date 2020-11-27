@@ -27,9 +27,7 @@ const Products = () => {
   }
 
   const addFilters = async (filterData) => {
-    let url =
-      "http://localhost:4000/products/?" +
-      new URLSearchParams(filterData).toString();
+    let url = "https://hackathon-rentify.herokuapp.com/products/?" + new URLSearchParams(filterData).toString();
     setLoading(true);
     let response = await fetch(url);
     let newData = await response.json();
@@ -39,7 +37,7 @@ const Products = () => {
 
   useEffect(() => {
     const getProducts = async () => {
-      let response = await fetch("http://localhost:4000/products");
+      let response = await fetch("https://hackathon-rentify.herokuapp.com/products");
       setLoading(true);
       let productData = await response.json();
       //   if (productData.data.length !== data.length) {

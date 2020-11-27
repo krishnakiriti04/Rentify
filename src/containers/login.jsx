@@ -21,7 +21,7 @@ const Login = () => {
             email : email,
             password : password
         }
-        let response = await fetch('http://localhost:4000/api/login',{
+        let response = await fetch('https://hackathon-rentify.herokuapp.com/api/login',{
             method:"POST",
             body : JSON.stringify(data),
             headers: {
