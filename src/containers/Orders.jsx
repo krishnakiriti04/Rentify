@@ -78,7 +78,7 @@ const Orders = (props) => {
     rzp1.open();
     rzp1.on("payment.failed", function (response) {
       //alert(response.error.description);
-      toast.danger(response.error.description, {
+      toast.error(response.error.description, {
         position: "top-center",
         autoclose: 3000,
       });
