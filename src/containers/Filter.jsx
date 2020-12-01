@@ -3,11 +3,6 @@ import { FcFilledFilter,FcClearFilters} from "react-icons/fc"
 
 const Filter = ({ data, addFilters }) => {
   const [filter, setFilter] = useState({});
-  // const [brand,setBrand] = useState("");
-  // const [model,setModel] = useState("");
-  // const [fuel,setFuel] = useState("");
-  // const [seater,setSeater] = useState(0);
-  // const [wheels,setWheels] = useState(0);
 
   const clearFilters = ()=>{
     setFilter({});

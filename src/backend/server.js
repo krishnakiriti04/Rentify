@@ -6,12 +6,12 @@ const mongodb = require('mongodb');
 const api = require('./routes/api');
 const products = require('./routes/products');
 const contactus = require('./routes/contactus');
-
+const users = require('./routes/users');
+const orders = require("./routes/orders");
 
 const app = express();
 const dburl = process.env.DB_URL || "mongodb://localhost:27017";
 const port = process.env.PORT || 4000;
-// console.log("env url::", process.env.DB_URL)
 
 //middle ware
 app.use(cors());
@@ -21,7 +21,8 @@ app.use(bodyparser.json())
 app.use('/api', api)
 app.use('/products', products)
 app.use('/requests', contactus)
-
+app.use('/users', users)
+app.use("/orders", orders);
 
 app.get("/", (req, res) => {
     res.send("Welcome to the Rentify backend")

@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {useHistory} from "react-router-dom";
 import './../App.css';
 import {Link} from 'react-router-dom';
 import {toast} from "react-toastify";
@@ -7,11 +8,13 @@ import 'react-toastify/dist/ReactToastify.css';
 toast.configure();
 
 const Signup = () => {
+
+    let history = useHistory();
     let [email,setEmail] = useState("");
     let [password,setPassword] = useState("");
     let [username,setUsername] = useState("");
     let [phone,setPhone] = useState("");
-    let [role,setRole] = useState("");
+//    let [role,setRole] = useState("");
 
     const signupFunc = async (event) =>{
         event.preventDefault();
@@ -20,9 +23,11 @@ const Signup = () => {
             email : email,
             password : password,
             phone : phone,
-            role : role
+            role : "customer"
         }
-        let response = await fetch('https://hackathon-rentify.herokuapp.com/api/register',{
+        let url = 'https://hackathon-rentify.herokuapp.com/api/register';
+        //let url = "http://localhost:4000/api/register"
+        let response = await fetch(url,{
             method:"POST",
             body : JSON.stringify(data),
             headers: {
@@ -34,6 +39,7 @@ const Signup = () => {
         if(Fetchdata.status===200){
             //alert('Registration successfull');
             toast.success("Registration successfull")
+            history.push("/login");
         }else{
             toast.error("Registration Failed")
         }
@@ -41,13 +47,12 @@ const Signup = () => {
         setPassword("");
         setUsername("");
         setPhone("");
-        setRole("");
 
     }
 
     return (
-        <div className="container mt-3 d-flex justify-content-center">
-            <div className="card col-6 card-bg text-center">
+        <div className="container mt-3 d-flex justify-content-center register-page">
+            <div className="card col-md-6 col-sm-12 card-bg-register text-center">
                    <h1>Register</h1>
                 <div className="card-body w-75 mx-auto">
                     <form className="form-group" onSubmit={signupFunc} method="POST">
@@ -55,15 +60,10 @@ const Signup = () => {
                         <input type="email" name="email" id="email" className="bg-light form-control mb-2" onChange={(e)=> setEmail(e.target.value)} placeholder="Email" value={email} required/>
                         <input type="password" name="password" id="password" className="bg-light form-control mb-2" onChange={(e)=> setPassword(e.target.value)} value={password} placeholder="Password" required/>
                         <input type="tel" name="phone" id="phone" className="bg-light form-control mb-2" onChange={(e)=> setPhone(e.target.value)} placeholder="Phone" value={phone} required/>
-                        <select className="form-control mb-2" onChange={(e)=>setRole(e.target.value)}>
-                            <option value="">Select Role</option>
-                            <option value="admin">Admin</option>
-                            <option value="customer">Customer</option>
-                        </select>
                         <button type="submit" className="btn btn-info px-3">Signup</button>
                     </form>
                     <div>
-                        <Link to="/">Back to Login</Link>
+                        <Link to="/login">Back to Login</Link>
                     </div>
                 </div>
 

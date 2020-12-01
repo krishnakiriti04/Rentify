@@ -1,9 +1,23 @@
 .card-bg {
     background-image: linear-gradient(to top, #d9afd9 0%, #97d9e1 100%);
+    height: 50vh;
+    position: relative;
+    top: 25%;
 }
 
+.card-bg-register {
+    background-image: linear-gradient(to top, #d9afd9 0%, #97d9e1 100%);
+    height: 60vh;
+    position: absolute;
+    top: 20%;
+}
 
-/* linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), */
+.login-page,
+.register-page {
+    width: 100vw;
+    height: 90vh;
+    background-color: rgb(255, 255, 255);
+}
 
 .filter-page {
     background-image: linear-gradient(120deg, #90affb 0%, #271b1c 100%);
@@ -23,6 +37,20 @@
     height: 100vh;
 }
 
+.close-btn {
+    padding: 0 5px;
+}
+
+.close-btn:hover {
+    background: rgb(207, 32, 32);
+    color: black;
+}
+
+.brand-name {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 22px !important;
+}
+
 .contact-card {
     background-image: linear-gradient(-225deg, #CBBACC 0%, #2580B3 100%);
 }
@@ -31,22 +59,58 @@
     background-size: cover;
 }
 
-.hero-img {
-    color: black;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.myorder-page {
+    background-color: #97d9e1;
     height: 100vh;
-    padding-top: 200px;
-    height: 100vh;
-    width: 100vw;
+}
+
+.butn {
+    cursor: pointer;
 }
 
 .hero-body {
     opacity: 1;
     z-index: 2;
-    color: white;
-    text-align: left;
+    color: rgb(255, 255, 255);
+    font-weight: 300;
+    position: absolute;
+    top: 127%;
+    left: 5%;
+    text-shadow: 2px 2px black;
+}
+
+.heading-body {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+}
+
+.heading-body h1 {
+    color: rgb(255, 255, 255);
+    font-size: 72px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-shadow: 2px 2px black;
+    position: absolute;
+    left: 3%;
+    top: 40%
+}
+
+.heading-body h5 {
+    color: #ffc107;
+    font-size: 26px;
+    text-shadow: 2px 2px black;
+    position: absolute;
+    left: 3%;
+    top: 55%
+}
+
+.div-images {
+    opacity: 0.4;
+    height: 45vh;
+    overflow: hidden;
+    position: relative;
 }
 
 .filterbtn {
@@ -56,4 +120,14 @@
 
 .add-item {
     background-image: linear-gradient(-225deg, #2CD8D5 0%, #6B8DD6 48%, #8E37D7 100%);
+}
+
+.close-icon {
+    color: red;
+}
+
+@media (min-width:768px) and (max-width:1240px) {
+    .booking-div {
+        height: 400px !important;
+    }
 }

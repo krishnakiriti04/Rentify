@@ -21,7 +21,9 @@ const Login = () => {
             email : email,
             password : password
         }
-        let response = await fetch('https://hackathon-rentify.herokuapp.com/api/login',{
+          let url = 'https://hackathon-rentify.herokuapp.com/api/login';
+          //let url = `http://localhost:4000/api/login`;
+          let response = await fetch(url,{
             method:"POST",
             body : JSON.stringify(data),
             headers: {
@@ -46,7 +48,7 @@ const Login = () => {
     }
 
     return (
-        <div className="container mt-3 d-flex justify-content-center">
+        <div className="container mt-3 d-flex justify-content-center login-page">
             <div className="card col-md-6 col-sm-12 card-bg text-center">
                    <h1>Login</h1>
                 <div className="card-body w-md-75 w-sm-100 mx-md-auto mx-sm-2">
@@ -60,11 +62,6 @@ const Login = () => {
                         <p>Doesn't have an account? <Link to="/register">Sign Up</Link></p>        
                     </div>
                 </div>
-                <div className="text-center">
-                <h5>Test account</h5>
-                <h6>username : admin@gmail.com</h6>
-                <h6>password: admin</h6>
-            </div>
             </div>
         </div>
     )

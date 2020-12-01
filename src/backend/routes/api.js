@@ -6,7 +6,15 @@ const Razorpay = require("razorpay");
 const client = mongodb.MongoClient;
 
 
+//-------------------TOC-------------------
+// 1.login Api("/login")
+// 2.Register Api ("/register")
+// 3.RazorPay integration api
+//-------------------END OF TOC-------------------
+
+
 const dburl = process.env.DB_URL || "mongodb://localhost:27017";
+//const dburl = "mongodb://localhost:27017";
 
 let router = express.Router();
 
@@ -19,6 +27,7 @@ let register = router.route('/register');
 login.get((req, res) => {
     res.send("Login API");
 })
+
 
 login.post(async(req, res) => {
     try {

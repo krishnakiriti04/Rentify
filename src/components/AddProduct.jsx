@@ -92,6 +92,7 @@ function AddProduct() {
                     <div className="form-group col-md-6 col-sm-12">
                         <label className="offset-md-4" htmlFor="fuel">Fuel Type</label>
                         <select name="fuel" id="fuel" className="form-control offset-md-4 col-md-6 col-sm-12" onChange={formik.handleChange} required value={formik.values.fuel}>
+                            <option>Select Fuel Type</option>
                             <option value="Petrol">Petrol</option>
                             <option value="Diesel">Diesel</option>
                             <option value="Electric">Electric</option>

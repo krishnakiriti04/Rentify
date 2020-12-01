@@ -8,6 +8,7 @@ import Login from "./../containers/login";
 import ProtectedRoute from "./../containers/ProtectedRoutes";
 import Signup from "./../containers/Signup"
 import AddProduct from "./AddProduct";
+import MyOrders from "./../containers/MyOrders";
 
 function Navigation() {
     return (
@@ -15,13 +16,15 @@ function Navigation() {
         <Router>
         <div>
             <Switch>
-                    <Route path="/" exact component={Login}></Route>
+                    <Route path="/" exact component={LandingPage}></Route>
+                    <Route path="/login" exact component={Login}></Route>
                     <Route path="/register" exact component={Signup}></Route>
                     <ProtectedRoute path="/home" exact component={LandingPage}></ProtectedRoute>
                     <ProtectedRoute path="/orders" exact component={Orders}></ProtectedRoute>
                     <ProtectedRoute path="/products" exact component={Products}></ProtectedRoute>
                     <ProtectedRoute path="/contact" exact  component={ContactPage}></ProtectedRoute>
-                    <ProtectedRoute path="/addproduct" exact component={AddProduct}></ProtectedRoute>                    
+                    <ProtectedRoute path="/addproduct" exact component={AddProduct}></ProtectedRoute>
+                    <ProtectedRoute path="/myorders" exact component={MyOrders}></ProtectedRoute>                                        
             </Switch>
         </div>
     </Router>
