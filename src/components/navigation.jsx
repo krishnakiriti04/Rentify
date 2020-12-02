@@ -21,7 +21,7 @@ function Navigation() {
                     <Route path="/register" exact component={Signup}></Route>
                     <ProtectedRoute path="/home" exact component={LandingPage}></ProtectedRoute>
                     <ProtectedRoute path="/orders" exact component={Orders}></ProtectedRoute>
-                    <ProtectedRoute path="/products" exact component={Products}></ProtectedRoute>
+                    <Route path="/products" exact component={Products}></Route>
                     <ProtectedRoute path="/contact" exact  component={ContactPage}></ProtectedRoute>
                     <ProtectedRoute path="/addproduct" exact component={AddProduct}></ProtectedRoute>
                     <ProtectedRoute path="/myorders" exact component={MyOrders}></ProtectedRoute>                                        

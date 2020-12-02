@@ -4,6 +4,7 @@ import './../App.css';
 import {Link} from 'react-router-dom';
 import {toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import {Spinner} from "react-bootstrap";
 
 toast.configure();
 
@@ -15,8 +16,10 @@ const Signup = () => {
     let [username,setUsername] = useState("");
     let [phone,setPhone] = useState("");
 //    let [role,setRole] = useState("");
+    const [loading,setLoading] = useState(false);
 
     const signupFunc = async (event) =>{
+        setLoading(true);
         event.preventDefault();
         let data = {
             username : username,
@@ -35,6 +38,7 @@ const Signup = () => {
             }
         })
         let Fetchdata = await response.json();
+        setLoading(false);
         //console.log("Fetched Data", Fetchdata);
         if(Fetchdata.status===200){
             //alert('Registration successfull');
@@ -60,7 +64,7 @@ const Signup = () => {
                         <input type="email" name="email" id="email" className="bg-light form-control mb-2" onChange={(e)=> setEmail(e.target.value)} placeholder="Email" value={email} required/>
                         <input type="password" name="password" id="password" className="bg-light form-control mb-2" onChange={(e)=> setPassword(e.target.value)} value={password} placeholder="Password" required/>
                         <input type="tel" name="phone" id="phone" className="bg-light form-control mb-2" onChange={(e)=> setPhone(e.target.value)} placeholder="Phone" value={phone} required/>
-                        <button type="submit" className="btn btn-info px-3">Signup</button>
+                        <button type="submit" className="btn btn-info px-3">Signup { loading ? <Spinner animation="border" variant="light" /> :null}  </button>
                     </form>
                     <div>
                         <Link to="/login">Back to Login</Link>

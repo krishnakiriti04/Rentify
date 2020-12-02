@@ -32,6 +32,11 @@
     background-image: linear-gradient(120deg, #e8c7cb 0%, #65a0dc 100%);
 }
 
+.div-spinner {
+    /* height: 100vh; */
+    text-align: center;
+}
+
 .contact-page {
     background-color: #212529;
     height: 100vh;

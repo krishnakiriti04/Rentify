@@ -24,6 +24,7 @@ const Products = () => {
   const [role] = useState(localStorage.getItem('userRole'));
   const [modalData,setModalData] = useState(null);
   const [showuserModal,setUserModal] = useState(false);
+  const [dataLoaded, setDataLoaded] = useState(false);
 
   const handleCarbooking = (bookedcar) => {
     setCart([...cart, bookedcar]);
@@ -84,13 +85,14 @@ const Products = () => {
       let productData = await response.json();
       //   if (productData.data.length !== data.length) {
       setData(productData.data);
+      setDataLoaded(true);
       setLoading(false);
     };
     getProducts();
   }, []);
 
   return page === "orders" ? (
-    <Orders cart={cart} />
+    localStorage.getItem('user') ? <Orders cart={cart} /> : ( setPage("products") ,toast.info("Please login to continue",{position:"top-center",autoClose:3000}))
   ) : (
     <div className="text-center">
       <PageHeader />
@@ -176,7 +178,8 @@ const Products = () => {
                 </div>
               );
               })
-            ) : (<div className="text-center"> <h3>No Products found</h3> </div> ) }
+            ) : ( dataLoaded ? <div className="text-center"> <h3>No Products found</h3> </div> : <div className="div-spinner"> <Spinner animation="border" variant="info"/> </div> 
+            ) }
           </div>
         
         </div>

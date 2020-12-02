@@ -119,7 +119,8 @@ const newOrder = async()=>{
       </div>            
       <div className="container d-flex align-items-center">
         <div className="row p-md-3 p-sm-1 ">
-          {cart.map((car) => {
+
+          {cart.length!==0 ?cart.map((car) => {
               amountPayable =  car.price * totalDays;
               return (
                 <div className="card col-md-6 col-sm-12 my-1" key={car._id + Math.random()}>
@@ -138,7 +139,7 @@ const newOrder = async()=>{
                   </div>
                 </div>
               );
-            })
+            }) : <h1> Please select your vehicle</h1>
           }
           <div className="col-md-6 col-sm-12">
             <div className="card border p-3 bg-dark text-light border-black booking-div">

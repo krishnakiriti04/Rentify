@@ -1,6 +1,7 @@
 import React from "react";
 import jwt from "jsonwebtoken";
 import { Route, useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 
 let isAuth = false;
 const verifyToken = async () => {
@@ -31,8 +32,12 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
   return (
     <>
       <Route {...rest}
-        render={(props) =>
-          isAuth ? <Component {...props} /> : history.push("/")
+        render={(props) =>{
+         return isAuth ? <Component {...props} /> : (
+            toast.info("please login to continue",{autoClose:2000,position:"top-center"}),
+            history.push("/")
+          )
+        }
         }
       />
     </>

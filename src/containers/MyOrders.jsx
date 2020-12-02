@@ -3,6 +3,7 @@ import {useHistory} from "react-router-dom";
 import "./../App.css";
 import {  FaAngleLeft, FaSearch } from "react-icons/fa";
 import { toast } from "react-toastify";
+import { Spinner} from "react-bootstrap";
 
 function MyOrders() {
 
@@ -10,6 +11,7 @@ function MyOrders() {
 
   const [orders, setOrders] = useState([]);
   const [searchString,setSearchString] = useState("");
+  const [dataLoaded,setDataLoaded] = useState(false);
 
   const userdetails = {
     id: localStorage.getItem("userId"),
@@ -19,6 +21,7 @@ function MyOrders() {
 
 
   useEffect(() => {
+    setDataLoaded(false);
     const getOrderDetails = async () => {
         try {
             let url;
@@ -33,6 +36,7 @@ function MyOrders() {
             let response = await fetch(url);
             let fetchedData = await response.json();
             setOrders(fetchedData.results);
+            setDataLoaded(true);
         } catch (error) {
            toast.error("Error while fetching order details",{autoClose:2000}); 
         }
@@ -86,7 +90,15 @@ function MyOrders() {
         </thead>
         <tbody className="bg-light">
             {
-                search(orders).length===0 ? ( orders.length!==0? <tr><td><h1>No results found</h1></td></tr> : <tr><td><h1>No orders found</h1></td></tr>) :
+                search(orders).length===0 ? 
+                ( 
+                  orders.length!==0 ? 
+                    <tr><td><h1>No results found</h1></td></tr> :
+                       ( dataLoaded ? 
+                            <tr><td><h2>No orders found</h2></td></tr> : 
+                            <div className="div-spinner"> <Spinner animation="border" variant="info"/> </div> 
+                        )
+                ) :   
                 search(orders).map((order)=>{
                     return (
                         <tr key={order._id}>
