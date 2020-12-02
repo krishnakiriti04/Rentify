@@ -103,7 +103,7 @@ const Products = () => {
           </div>
           <div>
             {/* my orders button */}
-            <button onClick={showMyordersPage} className="btn btn-outline-light">{role==="admin" ? "All Orders" :"My Orders"}</button>
+            {role && <button onClick={showMyordersPage} className="btn btn-outline-light">{role==="admin" ? "All Orders" :"My Orders"}</button>}
           </div>
          </div>
         <div className="d-flex justify-content-between">
