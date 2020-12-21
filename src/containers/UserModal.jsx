@@ -15,8 +15,8 @@ const Modal_styles = {
     //backgroundImage: "linear-gradient(60deg, #abecd6 0%, #fbed96 100%)",
     zIndex: 1000,
     padding: "10px",
-    width: "400px", 
-    color:"gainsboro"
+    width: "600px", 
+    color:"gainsboro",
   };
   
   const Overlay_styles = {
@@ -28,6 +28,11 @@ const Modal_styles = {
     backgroundColor: "rgba(0,0,0,0.7)",
     zIndex: 1000,
   };
+
+  const Modal_Body = {
+    height : "400px",
+    overflow:"auto",
+  }
 
 function UserModal({closeUserModal, show}) {
 
@@ -84,7 +89,7 @@ function UserModal({closeUserModal, show}) {
     return (show && (
         <>
         <div style={Overlay_styles} />
-        <div style={Modal_styles} className="col-sm-10 col-xs-10">
+        <div style={Modal_styles}>
                 <section>
                     <div className="d-flex justify-content-between">
                         <div>
@@ -98,7 +103,7 @@ function UserModal({closeUserModal, show}) {
                         </div>
                     </div>   
                 </section>
-                <section className="bg-light modal-body mx-auto w-100">
+                <section className="bg-light modal-body mx-auto w-100" style={Modal_Body}>
                     <table className="table table-responsive table-striped">
                         <thead>
                             <tr>

@@ -77,8 +77,8 @@ function MyOrders() {
           </form>
           </div>
       </div>
-      <div className="w-75 mx-auto">
-      <table className="table table-striped mt-5">
+      <div className="w-75 mx-auto myorders-table mt-3">
+      <table className="table table-striped">
         <thead className="bg-dark text-light">
           <tr>
             <th>Vehicle</th>

@@ -198,7 +198,7 @@ const newOrder = async()=>{
               }
 
               {/* if Dates are selected total price is displayed */}
-              {(totalDays >=0)? (
+              {(totalDays >=0 && amountPayable > 0)? (
                 <>
                   <div className="text-center d-flex justify-content-center my-md-2 card-footer">
                     <h4>Amount Payable {Math.floor(amountPayable)} &#x20B9; </h4>
