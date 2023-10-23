@@ -4,6 +4,7 @@ import "./../App.css";
 import {  FaAngleLeft, FaSearch } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { Spinner} from "react-bootstrap";
+import { BE_CONFIG } from "../constants/url";
 
 function MyOrders() {
 
@@ -26,10 +27,10 @@ function MyOrders() {
         try {
             let url;
             if(userdetails.role!=="admin"){
-                url = `https://hackathon-rentify.herokuapp.com/orders/${userdetails.id}`;
+                url = `${BE_CONFIG}/orders/${userdetails.id}`;
                 //url = `http://localhost:4000/orders/${userdetails.id}`
             }else{
-                url = `https://hackathon-rentify.herokuapp.com/orders/`;
+                url = `${BE_CONFIG}/orders/`;
                 //url = `http://localhost:4000/orders/`
             }
             

@@ -4,6 +4,7 @@ import React,{useEffect,useState} from 'react';
 import {  toast } from 'react-toastify';
 import { MdClose } from "react-icons/md";
 import { Spinner } from 'react-bootstrap';
+import { BE_CONFIG } from '../constants/url';
 
 
 const Modal_styles = {
@@ -41,7 +42,7 @@ function UserModal({closeUserModal, show}) {
 
     const fetchUsers = async ()=>{
         try {
-            let url = 'https://hackathon-rentify.herokuapp.com/users';
+            let url = `${BE_CONFIG}/users`;
             //let url = "http://localhost:4000/users";
             setLoading(true);
             let response = await fetch(url);
@@ -59,7 +60,7 @@ function UserModal({closeUserModal, show}) {
             "role":role
         }
         try{
-            let url = `https://hackathon-rentify.herokuapp.com/users/${id}`
+            let url = `${BE_CONFIG}/users/${id}`
             //let url = `http://localhost:4000/users/${id}`
             let response = await fetch(url,{
                 method:"PUT",

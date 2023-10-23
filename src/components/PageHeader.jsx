@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import "./../App.css";
 import { Navbar, Nav, Button } from "react-bootstrap";
@@ -13,10 +13,6 @@ function PageHeader() {
     history.replace("/");
     toast.success("Logged out successfully", { autoClose: 3000 });
   };
-
-  useEffect(()=>{
-
-  },[localStorage])
 
   return (
     <>
