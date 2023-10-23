@@ -11,6 +11,7 @@ import { GiShoppingCart } from "react-icons/gi";
 import { FaFilter, FaPlus, FaEdit, FaTrashAlt } from "react-icons/fa";
 import {MdGroup} from "react-icons/md";
 import { toast } from "react-toastify";
+import { BE_CONFIG } from "../constants/url";
 
 
 const Products = () => {
@@ -37,7 +38,7 @@ const Products = () => {
   }
 
   const addFilters = async (filterData) => {
-    let url = "https://hackathon-rentify.herokuapp.com/products/?" + new URLSearchParams(filterData).toString();
+    let url = `${BE_CONFIG}/products/?` + new URLSearchParams(filterData).toString();
     //let url = "http://localhost:4000/products/?" + new URLSearchParams(filterData).toString();
     setLoading(true);
     let response = await fetch(url);
@@ -56,7 +57,7 @@ const Products = () => {
   }
 
   const deleteProduct = async (id)=>{
-    let url = `https://hackathon-rentify.herokuapp.com/products/${id}`;
+    let url = `${BE_CONFIG}/products/${id}`;
     //let url = `http://localhost:4000/products/${id}`;
     let response =await fetch(url,{
       method:"DELETE",
@@ -79,7 +80,7 @@ const Products = () => {
 
   useEffect(() => {
     const getProducts = async () => {
-       let response = await fetch("https://hackathon-rentify.herokuapp.com/products");
+       let response = await fetch(`${BE_CONFIG}/products`);
       //let response = await fetch("http://localhost:4000/products");
       setLoading(true);
       let productData = await response.json();

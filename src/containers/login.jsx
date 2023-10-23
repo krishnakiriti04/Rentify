@@ -4,6 +4,7 @@ import {Link, useHistory} from 'react-router-dom';
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {Spinner} from "react-bootstrap";
+import { BE_CONFIG } from '../constants/url';
 
 toast.configure();
 
@@ -21,7 +22,7 @@ const Login = () => {
             email : email,
             password : password
         }
-          let url = 'https://hackathon-rentify.herokuapp.com/api/login';
+          let url = `${BE_CONFIG}/api/login`;
           //let url = `http://localhost:4000/api/login`;
           let response = await fetch(url,{
             method:"POST",
