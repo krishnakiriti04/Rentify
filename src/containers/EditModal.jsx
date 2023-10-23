@@ -3,6 +3,7 @@ import {useHistory} from 'react-router-dom';
 import {useFormik} from 'formik';
 import {  toast } from 'react-toastify';
 import { MdClose } from "react-icons/md";
+import { BE_CONFIG } from '../constants/url';
 
 
 const Modal_styles = {
@@ -46,7 +47,7 @@ const Modal_styles = {
         }
     
         const onSubmit = async (values)=>{
-            let url = `https://hackathon-rentify.herokuapp.com/products/${productData._id}`;
+            let url = `${BE_CONFIG}/products/${productData._id}`;
             //let url = `http://localhost:4000/products/${productData._id}`
             let response = await fetch(url,{
                 method:"PUT",

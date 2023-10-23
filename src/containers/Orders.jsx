@@ -5,6 +5,7 @@ import "./../App.css";
 import { FaRegCalendarAlt, FaAngleLeft } from "react-icons/fa";
 import { toast } from "react-toastify";
 import ConfirmModal from "./confirmModal";
+import { BE_CONFIG } from "../constants/url";
 
 const Orders = (props) => {
 
@@ -23,10 +24,10 @@ const Orders = (props) => {
   let amountPayable ;
 
   const handlePayment = async (e) => {
-    const response = await fetch("https://hackathon-rentify.herokuapp.com/api/orders");
+    const response = await fetch(`${BE_CONFIG}/api/orders`);
     const data = await response.json();
     var options = {
-    key: "rzp_test_5ZzNWVi2y3Kd07", // Enter the Key ID generated from the Dashboard
+    key: "rzp_test_P5nhKCF460BfYt", // Enter the Key ID generated from the Dashboard
     amount: Math.floor(amountPayable) * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
     currency: "INR",
     name: "RENTIFY",
@@ -35,7 +36,7 @@ const Orders = (props) => {
     handler: async (response) => {
         try {
         const paymentId = response.razorpay_payment_id;
-        const url = `https://hackathon-rentify.herokuapp.com/api/capture/${paymentId}`;
+        const url = `${BE_CONFIG}/api/capture/${paymentId}`;
         // alert(response.razorpay_order_id);
         // alert(response.razorpay_signature)
         const captureResponse = await fetch(url, {
@@ -91,7 +92,7 @@ const newOrder = async()=>{
     totalDays : totalDays,
     bookingHours : (totalDays * 24)
   }
-  let url = `https://hackathon-rentify.herokuapp.com/orders/`;
+  let url = `${BE_CONFIG}/orders/`;
   //let url = `http://localhost:4000/orders`
   let response = await fetch(url,{
     method:"POST",
